@@ -20,7 +20,6 @@ body{
     display:flex;
 }
 
-/* ===== SIDEBAR ===== */
 
 .sidebar{
     width:260px;
@@ -59,7 +58,6 @@ body{
     font-weight:600;
 }
 
-/* ===== MAIN ===== */
 
 .main{
     flex:1;
@@ -68,7 +66,6 @@ body{
     overflow-y:auto;
 }
 
-/* ===== SECTION ===== */
 
 .section{
     background:#fff;
@@ -92,7 +89,6 @@ body{
     color:#333;
 }
 
-/* ===== FORM ===== */
 
 .form{
     margin-bottom:20px;
@@ -134,7 +130,6 @@ button:hover{
     background:#556cd6;
 }
 
-/* ===== TABLE ===== */
 
 table{
     width:100%;
@@ -161,7 +156,6 @@ tbody tr:nth-child(even){
     background:#f2f4ff;
 }
 
-/* ===== RESPONSIVE ===== */
 
 @media(max-width:768px){
     .layout{
