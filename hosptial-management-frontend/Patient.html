@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="Patient.css">
+</head>
+<body>
+
+<div class="layout">
+    <aside class="sidebar">
+        <div class="logo">🏥 HMS</div>
+
+        <div class="nav active" data-target="dashboard">Dashboard</div>
+        <div class="nav" data-target="appointments">Appointments</div>
+        <div class="nav" data-target="bills">Bills</div>
+        <div id="logoutBtn" class="nav logout-nav">Logout</div>
+    </aside>
+
+    <main class="main">
+        <section id="dashboard" class="section show">
+            <h1>Patient Dashboard</h1>
+            <div class="cards">
+                <div class="card">Appointments</div>
+                <div class="card">Bills</div>
+            </div>
+        </section>
+
+        <section id="appointments" class="section">
+            <h2>My Appointments</h2>
+            <div id="appointmentsData"></div>
+        </section>
+
+        <section id="bills" class="section">
+            <h2>My Bills</h2>
+            <div id="billsData"></div>
+        </section>
+    </main>
+</div>
+
+<script src="Patient.js"></script>
+</body>
+</html>

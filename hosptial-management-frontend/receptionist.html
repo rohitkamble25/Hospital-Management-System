@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Receptionist Dashboard</title>
+  <link rel="stylesheet" href="receptionist.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h2 class="logo">🏥 HMS</h2>
+    <a class="nav active" data-target="patients">Patients</a>
+    <a class="nav" data-target="appointments">Appointments</a>
+    <a class="nav" data-target="bills">Bills</a>
+    <a class="nav" onclick="logout()">Logout</a>
+  </aside>
+
+  <main class="main">
+
+    <section id="patients" class="section show">
+      <h2>Create Patient</h2>
+
+      <div class="form">
+        <input id="pname" placeholder="Patient Name">
+        <input id="pemail" type="email" placeholder="Email">
+        <input id="ppassword" type="password" placeholder="Password">
+        <input id="page" type="number" placeholder="Age">
+        <input id="pphone" placeholder="Phone">
+        <input id="paddress" placeholder="Address">
+        <textarea id="phistory" placeholder="Medical History"></textarea>
+        <button onclick="createPatient()">Create Patient</button>
+      </div>
+
+      <h3>Patients List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="patientsTable"></tbody>
+      </table>
+    </section>
+
+    <section id="appointments" class="section">
+      <h2>Create Appointment</h2>
+
+      <div class="form">
+        <input id="pid" placeholder="Patient ID">
+        <input id="did" placeholder="Doctor ID">
+        <input id="time" type="datetime-local">
+        <button onclick="createAppointment()">Create Appointment</button>
+      </div>
+
+      <h3>Appointments</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Patient ID</th>
+            <th>Doctor ID</th>
+            <th>Date & Time</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentsTable"></tbody>
+      </table>
+    </section>
+
+    <section id="bills" class="section">
+      <h2>Create Bill</h2>
+
+      <div class="form">
+        <input id="bid" type="number" placeholder="Patient ID" oninput="loadBills()">
+        <input id="amount" type="number" placeholder="Amount">
+        <textarea id="details" placeholder="Bill Details"></textarea>
+        <button onclick="createBill()">Create Bill</button>
+      </div>
+
+      <h3>Bills</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Bill ID</th>
+            <th>Patient ID</th>
+            <th>Amount</th>
+            <th>Details</th>
+            <th>Created At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="billsTable"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+</div>
+
+<script src="receptionist.js"></script>
+</body>
+</html>

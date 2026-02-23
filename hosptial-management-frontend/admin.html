@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HMS - Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo">🏥 HMS</div>
+  <nav>
+    <a class="nav-link active" data-section="dashboard">Dashboard</a>
+    <a class="nav-link" data-section="doctors">Doctors</a>
+    <a class="nav-link" data-section="receptionists">Receptionists</a>
+    <a class="nav-link" data-section="patients">Patients</a>
+    <a class="nav-link logout" id="logoutBtn">Logout</a>
+  </nav>
+</div>
+
+<main class="main">
+  <header class="topbar">
+    <div>Admin Panel</div>
+    <div id="adminEmail"></div>
+  </header>
+
+  <section id="dashboard" class="section">
+    <div class="cards">
+      <div class="card">
+        <div class="card-number" id="cardDoctors">0</div>
+        <div class="card-label">Doctors</div>
+      </div>
+      <div class="card">
+        <div class="card-number" id="cardPatients">0</div>
+        <div class="card-label">Patients</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="doctors" class="section hidden">
+    <button class="btn primary" id="openAddDoctor">Add Doctor</button>
+    <table id="doctorsTable">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Spec</th><th>Email</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section id="receptionists" class="section hidden">
+    <button class="btn primary" id="openAddReceptionist">Add Receptionist</button>
+    <table id="receptionistsTable">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section id="patients" class="section hidden">
+    <table id="patientsTable">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Age</th><th>Phone</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</main>
+
+<div id="doctorModal" class="modal hidden">
+  <div class="modal-content">
+    <input id="doctorName" placeholder="Name">
+    <input id="doctorSpec" placeholder="Specialization">
+    <input id="doctorEmail" placeholder="Email">
+    <input id="doctorPassword" type="password" placeholder="Password">
+    <button class="btn primary" id="saveDoctorBtn">Save</button>
+    <button class="btn" id="closeDoctorModal">Cancel</button>
+  </div>
+</div>
+
+<div id="receptionistModal" class="modal hidden">
+  <div class="modal-content">
+    <input id="receptionistName" placeholder="Name">
+    <input id="receptionistEmail" placeholder="Email">
+    <input id="receptionistPassword" type="password" placeholder="Password">
+    <button class="btn primary" id="saveReceptionistBtn">Save</button>
+    <button class="btn" id="closeReceptionistModal">Cancel</button>
+  </div>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>

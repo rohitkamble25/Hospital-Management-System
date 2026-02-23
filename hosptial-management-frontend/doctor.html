@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="doctor.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo">🏥 HMS</div>
+  <div class="nav-link">Dashboard</div>
+  <div class="nav-link" onclick="logout()">Logout</div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <h2>Doctor Panel</h2>
+    <div id="doctorName"></div>
+  </div>
+
+  <div class="section">
+    <div class="card">
+      <h3>Today's Appointments</h3>
+      <div id="todayAppointments">0</div>
+    </div>
+
+    <div class="card">
+      <h3>Total Patients</h3>
+      <div id="totalPatients">0</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <table id="appointmentsTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Patient</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="doctor.js"></script>
+</body>
+</html>
