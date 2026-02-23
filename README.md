@@ -7,33 +7,32 @@ A full-stack Hospital Management System built using **Spring Boot**, **PostgreSQ
 ## 🚀 Tech Stack
 
 ### 🔹 Backend
-- Java  
-- Spring Boot  
-- Spring Security (JWT)  
-- Spring Data JPA  
-- Hibernate  
-- PostgreSQL  
-- Maven  
+- Java
+- Spring Boot
+- Spring Security (JWT)
+- Spring Data JPA
+- Hibernate
+- PostgreSQL
+- Maven
 
 ### 🔹 Frontend
-- HTML  
-- CSS  
-- JavaScript  
+- HTML
+- CSS
+- JavaScript
 
 ### 🔹 Tools
-- Git & GitHub  
-- VS Code  
+- Git & GitHub
+- VS Code
 
 ---
 
 ## 🔐 Key Features
-
-- Role-based access (Admin, Doctor, Receptionist, Patient)  
-- Secure authentication using JWT  
-- Appointment scheduling  
-- Billing management  
-- Patient record system  
-- RESTful API architecture  
+- Role-based access (Admin, Doctor, Receptionist, Patient)
+- Secure authentication using JWT
+- Appointment scheduling
+- Billing management
+- Patient record system
+- RESTful API architecture
 
 ---
 
@@ -64,11 +63,10 @@ mvn spring-boot:run
 ---
 
 ## 📌 Future Improvements
-
-- Docker support  
-- AWS deployment  
-- Swagger API documentation  
-- React-based UI upgrade  
+- Docker support
+- AWS deployment
+- Swagger API documentation
+- React-based UI upgrade
 
 ---
 
