@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/api";
+const BASE_URL = "https://hospital-management-system-vlze.onrender.com/api";
 
 async function registerUser() {
     const name = document.getElementById("name").value.trim();

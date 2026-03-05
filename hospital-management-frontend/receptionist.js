@@ -1,5 +1,5 @@
-const API_BASE = "http://localhost:8080/api/reception";
-const AUTH_API = "http://localhost:8080/api/auth";
+const API_BASE = "https://hospital-management-system-vlze.onrender.com/api/reception";
+const AUTH_API = "https://hospital-management-system-vlze.onrender.com/api/auth";
 
 function authHeader() {
   const token = localStorage.getItem("token");

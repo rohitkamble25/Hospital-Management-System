@@ -1,4 +1,4 @@
-const API = "http://localhost:8080/api";
+const API = "https://hospital-management-system-vlze.onrender.com/api";
 
 let appointments = [];
 let doctorId = null;
