@@ -36,9 +36,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String path = request.getServletPath();
 
         if (request.getMethod().equals("OPTIONS")
-                || path.equals("/api/auth/login")
-                || path.equals("/api/auth/register")
-                || path.equals("/api/patient/register")) {
+                || path.startsWith("/api/auth")
+                || path.startsWith("/api/patient/register")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -61,7 +60,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (jwtService.isTokenValid(token, userDetails)) {
 
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
+                        userDetails,
+                        null,
+                        userDetails.getAuthorities());
 
                 authToken.setDetails(
                         new WebAuthenticationDetailsSource().buildDetails(request));
