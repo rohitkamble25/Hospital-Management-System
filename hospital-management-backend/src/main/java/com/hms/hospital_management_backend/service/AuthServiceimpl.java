@@ -1,7 +1,6 @@
 package com.hms.hospital_management_backend.service;
 
 import com.hms.hospital_management_backend.model.Role;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,7 +47,7 @@ public class AuthServiceimpl implements AuthService {
                 .name(name)
                 .email(email)
                 .password(passwordEncoder.encode(password))
-                .role(role)
+                .role(Role.PATIENT)
                 .build();
 
         return userRepo.save(user);
