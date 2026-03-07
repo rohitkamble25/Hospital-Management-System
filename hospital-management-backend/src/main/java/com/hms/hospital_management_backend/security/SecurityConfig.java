@@ -36,22 +36,17 @@ public class SecurityConfig {
                 .cors(cors -> {
                 })
 
-                .formLogin(form -> form.disable())
-                .httpBasic(basic -> basic.disable())
-
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .authorizeHttpRequests(auth -> auth
-
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/patient/register").permitAll()
 
-                        .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/doctor/**").hasAuthority("DOCTOR")
-                        .requestMatchers("/api/reception/**").hasAuthority("RECEPTIONIST")
-                        .requestMatchers("/api/patient/**").hasAuthority("PATIENT")
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/doctor/**").hasRole("DOCTOR")
+                        .requestMatchers("/api/reception/**").hasRole("RECEPTIONIST")
+                        .requestMatchers("/api/patient/**").hasRole("PATIENT")
 
                         .anyRequest().authenticated())
 
@@ -65,10 +60,11 @@ public class SecurityConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOriginPatterns(List.of("*"));
+        config.setAllowedOrigins(List.of(
+                "https://hospital-management-frontend-rohit.netlify.app"));
+
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
-        config.setExposedHeaders(List.of("Authorization", "Content-Type"));
         config.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
