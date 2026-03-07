@@ -1,5 +1,7 @@
 package com.hms.hospital_management_backend.security;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -31,8 +33,10 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf.disable())
+
                 .cors(cors -> {
                 })
+
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
 
@@ -40,20 +44,17 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
-                        // allow preflight requests
+                        // allow preflight CORS requests
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                        // allow login and register
-                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
-
+                        // auth endpoints
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/patient/register").permitAll()
 
-                        // role based endpoints
+                        // role based access
                         .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/api/reception/**").hasAuthority("RECEPTIONIST")
                         .requestMatchers("/api/doctor/**").hasAuthority("DOCTOR")
+                        .requestMatchers("/api/reception/**").hasAuthority("RECEPTIONIST")
                         .requestMatchers("/api/patient/**").hasAuthority("PATIENT")
 
                         .anyRequest().authenticated())
@@ -68,13 +69,12 @@ public class SecurityConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        config.addAllowedOrigin("https://hospital-management-frontend-rohit.netlify.app");
-        config.addAllowedMethod("*");
-        config.addAllowedHeader("*");
-        config.setAllowCredentials(true);
+        config.setAllowedOriginPatterns(List.of("*"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-
         source.registerCorsConfiguration("/**", config);
 
         return source;
