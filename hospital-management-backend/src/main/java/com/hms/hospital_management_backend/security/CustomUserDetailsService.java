@@ -1,7 +1,7 @@
 package com.hms.hospital_management_backend.security;
 
 import com.hms.hospital_management_backend.Repo.UserRepo;
-import com.hms.hospital_management_backend.model.User; // Your entity
+import com.hms.hospital_management_backend.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,6 +28,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 appUser.getEmail(),
                 appUser.getPassword(),
-                List.of(new SimpleGrantedAuthority("ROLE_" + appUser.getRole().name())));
+                List.of(new SimpleGrantedAuthority(appUser.getRole().name())));
     }
 }
