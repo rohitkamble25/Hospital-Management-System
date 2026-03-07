@@ -1,29 +1,34 @@
 package com.hms.hospital_management_backend.service;
 
 import com.hms.hospital_management_backend.model.Role;
+import com.hms.hospital_management_backend.model.Patient;
+import com.hms.hospital_management_backend.Repo.UserRepo;
+import com.hms.hospital_management_backend.Repo.PatientRepo;
+import com.hms.hospital_management_backend.model.User;
+import com.hms.hospital_management_backend.security.JwtService;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.hms.hospital_management_backend.Repo.UserRepo;
-import com.hms.hospital_management_backend.model.User;
-import com.hms.hospital_management_backend.security.JwtService;
-
 @Service
 public class AuthServiceimpl implements AuthService {
 
     private final UserRepo userRepo;
+    private final PatientRepo patientRepo;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
     public AuthServiceimpl(UserRepo userRepo,
+            PatientRepo patientRepo,
             PasswordEncoder passwordEncoder,
             AuthenticationManager authenticationManager,
             JwtService jwtService) {
 
         this.userRepo = userRepo;
+        this.patientRepo = patientRepo;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
@@ -50,7 +55,16 @@ public class AuthServiceimpl implements AuthService {
                 .role(Role.PATIENT)
                 .build();
 
-        return userRepo.save(user);
+        user = userRepo.save(user);
+
+        Patient patient = Patient.builder()
+                .name(name)
+                .user(user)
+                .build();
+
+        patientRepo.save(patient);
+
+        return user;
     }
 
     @Override
