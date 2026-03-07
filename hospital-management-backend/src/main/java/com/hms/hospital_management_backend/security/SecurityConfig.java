@@ -33,7 +33,6 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf.disable())
-
                 .cors(cors -> {
                 })
 
@@ -44,14 +43,11 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
-                        // allow preflight CORS requests
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                        // auth endpoints
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/patient/register").permitAll()
 
-                        // role based access
                         .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/api/doctor/**").hasAuthority("DOCTOR")
                         .requestMatchers("/api/reception/**").hasAuthority("RECEPTIONIST")
@@ -72,6 +68,7 @@ public class SecurityConfig {
         config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
+        config.setExposedHeaders(List.of("Authorization", "Content-Type"));
         config.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
